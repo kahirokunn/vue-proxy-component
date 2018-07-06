@@ -1,7 +1,4 @@
-<script>
-import Vue from 'vue';
-
-export default Vue.extend({
+export default {
   name: 'ProxyComponent',
   props: {
     tag: {
@@ -19,5 +16,4 @@ export default Vue.extend({
   beforeDestroy() {
     this.$el.remove();
   },
-});
-</script>
+};
