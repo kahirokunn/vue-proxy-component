@@ -1,4 +1,7 @@
 # vue-proxy-component
+## DEMO
+https://jsfiddle.net/BeYond123/eywraw8t/141794
+
 ## インストール方法
 npm
 
