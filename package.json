@@ -22,6 +22,6 @@
     "node": ">=6"
   },
   "peerDependencies": {
-    "vue": "~2.0"
+    "vue": "~2"
   }
 }
