@@ -53,7 +53,7 @@ export default Vue.extend({
   },
 
   render(h) {
-    const startingPointNode = h(this.tag, this.$slots.default || []);
+    const startingPointNode = h(this.tag, { attrs: this.$attrs, on: this.$listeners }, this.$slots.default || []);
     this.endPointVm.node = startingPointNode;
   },
 
@@ -63,5 +63,6 @@ export default Vue.extend({
 
   beforeDestroy() {
     this.endPointVm.$el.remove();
+    this.endPointVm.$destroy();
   },
 });
