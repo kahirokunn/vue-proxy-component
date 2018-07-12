@@ -15,10 +15,20 @@ yarn
 $ yarn add vue-proxy-component
 ```
 
+Vuex または、Vue router を使っていた場合
+
 ```
 import ProxyComponent from 'vue-proxy-component';
 
-Vue.component('ProxyComponent', ProxyComponent);
+Vue.use(ProxyComponent, { store, router });
+```
+
+VuexもVue routerも使っていなかった場合
+
+```
+import ProxyComponent from 'vue-proxy-component';
+
+Vue.use(ProxyComponent);
 ```
 
 ## 特徴
@@ -29,6 +39,10 @@ ProxyComponent内にモーダルをマークアップしたりすると、モー
 
 ```
 <ProxyComponent>
-  <SomeComponent @click="$emit('hello')" :hoge="fuga">
+  <SomeComponent
+    @success="$router.push('/hello')"
+    @error="$store.dispatch('/hello')"
+    @click="$emit('hello')"
+    :hoge="fuga">
 </ProxyComponent>
 ```

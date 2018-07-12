@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import container from './container';
 
 // アルゴリズム
 // 1. 描画先Vueインスタンスの仕組み
@@ -22,23 +22,15 @@ import Vue from 'vue';
 // 1. observerじゃないthis.endPointVmにただnode propを表示するだけのコンポーネントを作成
 // 2. そのnode propをProxyComponentの再描画のタイミングで、同期させる
 
-const ProxyComponentEndPoint = Vue.extend({
-  name: 'ProxyComponentEndPoint',
-
-  functional: true,
-
-  props: {
-    node: {
-      default: '',
-    },
-  },
+const ProxyComponentEndPointOptions = {
+  data: () => ({ node: '' }),
 
   render(h) {
     return this.node;
   },
-});
+};
 
-export default Vue.extend({
+export default {
   name: 'ProxyComponent',
 
   props: {
@@ -49,7 +41,8 @@ export default Vue.extend({
   },
 
   beforeCreate() {
-    this.endPointVm = new ProxyComponentEndPoint().$mount();
+    this.endPointVm = new container.Vue(Object.assign({}, container.options, ProxyComponentEndPointOptions));
+    this.endPointVm.$mount();
   },
 
   render(h) {
@@ -65,4 +58,4 @@ export default Vue.extend({
     this.endPointVm.$el.remove();
     this.endPointVm.$destroy();
   },
-});
+};
