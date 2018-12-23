@@ -1,3 +1,3 @@
-const container = { Vue: null, options: { store: null, router: null } };
+const container = { Vue: undefined, options: { store: undefined, router: undefined } };
 
 export default container;
